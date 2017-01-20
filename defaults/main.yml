@@ -1,0 +1,7 @@
+---
+
+# MySQL package version is default to 9
+# then it will download from http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+# the el7-9 indicates el{os_major_version}-{mysql_package_version}, and the os_major_version 
+# will be auto detected
+mysql_package_version: 9

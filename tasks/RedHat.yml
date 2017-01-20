@@ -1,0 +1,15 @@
+---
+
+- name: Retrieve RedHat Major Version
+  shell: 'rpm -qa --queryformat "%{VERSION}\n" "(redhat|sl|slf|centos|oraclelinux)-release(|-server|-workstation|-client|-computenode)"'
+  register: redhat_version
+
+- name: Adding MySQL Yum Repository
+  yum:
+    name: "http://dev.mysql.com/get/mysql57-community-release-el{{ redhat_version.stdout }}-{{ mysql_package_version }}.noarch.rpm"
+    state: present
+
+- name: Installing MySQL
+  yum:
+    name: mysql-community-server
+    state: present
